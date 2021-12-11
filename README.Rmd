@@ -59,7 +59,7 @@ Part 1 tasks us to find the points that are lower than any adjacent point. Excer
 
 > Find all of the low points on your heightmap. What is the sum of the risk levels of all low points on your heightmap?
 
-The input can be parsed with `grid_tidy` to create a tidy one-row-per-cell form of row, cell and value.
+The input can be parsed with `grid_tidy` to create a tidy one-row-per-cell form of row, column and value.
 
 ```{r}
 input %>%
