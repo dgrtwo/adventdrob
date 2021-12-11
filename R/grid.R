@@ -42,7 +42,7 @@ grid_matrix <- function(d, var, sep = "", parse = TRUE) {
     ret <- purrr::map(ret, parse_txt)
   }
 
-  do.call(rbind, .)
+  do.call(rbind, ret)
 }
 
 #' @rdname grid_tidy
@@ -53,4 +53,30 @@ grid_graph <- function(d, ...) {
 
   tidygraph::create_lattice(dimensions) %>%
     mutate(!!!td)
+}
+
+#' @export
+grid_print <- function(x, ...) UseMethod("grid_print")
+
+#' @export
+grid_print.tbl_df <- function(x, sep = "", ...) {
+  ret <- x %>%
+    arrange(row, col) %>%
+    group_by(row) %>%
+    summarize(value = paste0(value, collapse = sep))
+
+  cat(ret$value, sep = "\n")
+}
+
+#' @export
+grid_print.tbl_graph <- function(x, sep = "", ...) {
+  x %>%
+    as_tibble("nodes") %>%
+    grid_print()
+}
+
+#' @export
+grid_print.matrix <- function(x, sep = "", ...) {
+  apply(x, 1, paste0, collapse = sep) %>%
+    cat(sep = "\n")
 }
