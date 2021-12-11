@@ -1,0 +1,18 @@
+Package: adventdrob
+Type: Package
+Title: Personal Package for Advent of Code
+Version: 0.0.1
+Authors@R: person("David", "Robinson", email = "admiral.david@gmail.com", role = c("aut", "cre"))
+Maintainer: David Robinson <admiral.david@gmail.com>
+Description: My personal package of functions that help with Advent of Code.
+    Released without any expectation of maintenance or support.
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr,
+    httr,
+    readr,
+    stringr,
+    tidyr
+RoxygenNote: 7.1.2
+License: MIT + file LICENSE
