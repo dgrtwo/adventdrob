@@ -44,6 +44,7 @@ adjacent_join <- function(x, y = x, diagonal = FALSE, suffix = c("", "2")) {
 #'   adjacent_nest(diagonal = TRUE) %>%
 #'   mutate(value = value + map_dbl(adjacent_value, ~ sum(. > 9)))
 #'
+#' @export
 adjacent_nest <- function(x, y = x, diagonal = FALSE) {
   x %>%
     adjacent_join(y, diagonal = diagonal) %>%
