@@ -28,3 +28,27 @@ Many Advent of Code challenges involve parsing a grid where each row
 of the input represents one row of the grid. These turn such inputs into
 a tidy table, a matrix, or a tidygraph object.
 }
+\examples{
+
+# 2021 Day 3 Part 1
+grid_day3 <- advent_input(3) \%>\%
+  grid_tidy(x)
+
+grid_day3 \%>\%
+  group_by(col) \%>\%
+  summarize(gamma = round(mean(value)),
+            epsilon = 1 - gamma) \%>\%
+  mutate(power = 2 ^ (rev(col) - 1)) \%>\%
+  summarize(gamma = sum(gamma * power),
+            epsilon = sum(epsilon * power),
+            answer = gamma * epsilon)
+
+# 2021 Day 4 Part 1 (includes a third dimension of "board")
+input4 <- advent_input(4)
+grid_day4 <- advent_input(4) \%>\%
+  slice(-1) \%>\%
+  mutate(board = cumsum(x == "")) \%>\%
+  filter(x != "") \%>\%
+  grid_tidy(x, sep = " +")
+
+}
