@@ -29,7 +29,7 @@ You can install the development version of adventdrob like so:
 devtools::install_github("dgrtwo/adventdrob")
 ```
 
-You'll then have to set ADVENT_SESSION in your .Rprofile to your Advent of Code cookie. Example of how to get that in Chrome:
+You'll then have to set ADVENT_SESSION in your .Renviron to your Advent of Code cookie. Example of how to get that in Chrome:
 
 * Visit [adventofcode.com](https://adventofcode.com/), and log in
 * Right click + Inspect to view Developer Tools
