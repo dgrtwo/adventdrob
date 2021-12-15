@@ -10,7 +10,7 @@ grid_tidy(d, var, sep = "", parse = TRUE)
 
 grid_matrix(d, var, sep = "", parse = TRUE)
 
-grid_graph(d, ...)
+grid_graph(d, ..., directed = FALSE, mutual = FALSE, circular = FALSE)
 }
 \arguments{
 \item{d}{A table}
@@ -22,6 +22,12 @@ grid_graph(d, ...)
 \item{parse}{Whether to parse the input by guessing its format}
 
 \item{...}{Any of the above arguments}
+
+\item{directed}{Passed on to \code{\link[tidygraph]{create_lattice}}}
+
+\item{mutual}{Passed on to \code{\link[tidygraph]{create_lattice}}}
+
+\item{circular}{Passed on to \code{\link[tidygraph]{create_lattice}}}
 }
 \description{
 Many Advent of Code challenges involve parsing a grid where each row

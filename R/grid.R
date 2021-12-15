@@ -69,12 +69,24 @@ grid_matrix <- function(d, var, sep = "", parse = TRUE) {
 }
 
 #' @rdname grid_tidy
+#'
+#' @param directed Passed on to \code{\link[tidygraph]{create_lattice}}
+#' @param mutual Passed on to \code{\link[tidygraph]{create_lattice}}
+#' @param circular Passed on to \code{\link[tidygraph]{create_lattice}}
+#'
 #' @export
-grid_graph <- function(d, ...) {
+grid_graph <- function(d,
+                       ...,
+                       directed = FALSE,
+                       mutual = FALSE,
+                       circular = FALSE) {
   td <- grid_tidy(d, ...)
   dimensions <- c(max(td$row), max(td$col))
 
-  tidygraph::create_lattice(dimensions) %>%
+  tidygraph::create_lattice(dimensions,
+                            directed = directed,
+                            mutual = mutual,
+                            circular = circular) %>%
     mutate(!!!td)
 }
 
@@ -102,4 +114,15 @@ grid_print.tbl_graph <- function(x, sep = "", ...) {
 grid_print.matrix <- function(x, sep = "", ...) {
   apply(x, 1, paste0, collapse = sep) %>%
     cat(sep = "\n")
+}
+
+#' @export
+grid_plot <- function(x, ...) UseMethod("grid_plot")
+
+#' @export
+grid_plot.tbl_df <- function(x, ...) {
+  x %>%
+    ggplot2::ggplot(aes(col, row)) +
+    ggplot2::geom_text(aes(label = value)) +
+    ggplot2::scale_y_reverse()
 }

@@ -24,7 +24,7 @@ library(dplyr)
 grid11 <- advent_input(11) \%>\%
   grid_tidy(x)
 
-# One "flash"
+# One "flash": any cells with a value above 9 cause neighbors to increase
 grid11 \%>\%
   mutate(value = value + 1) \%>\%
   adjacent_nest(diagonal = TRUE) \%>\%
