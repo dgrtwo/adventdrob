@@ -5,6 +5,8 @@
 #' a self-join
 #' @param diagonal Whether diagonal cells are counted as adjacent
 #' @param suffix By default, "" and "2"
+#'
+#' @export
 adjacent_join <- function(x, y = x, diagonal = FALSE, suffix = c("", "2")) {
   adj <- tibble(row_delta = c(-1, 1, 0, 0),
                 col_delta = c(0, 0, -1, 1))
