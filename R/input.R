@@ -6,7 +6,7 @@
 #'
 #' @export
 advent_input <- function(day = lubridate::day(Sys.Date()),
-                         year = 2021,
+                         year = 2022,
                          parse = FALSE) {
   session <- Sys.getenv("ADVENT_SESSION")
   if (session == "") {

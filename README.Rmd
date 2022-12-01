@@ -45,7 +45,7 @@ You'll then have to set ADVENT_SESSION in your .Renviron to your Advent of Code 
 library(dplyr)
 library(adventdrob)
 
-input <- advent_input(9)
+input <- advent_input(9, 2021)
 input
 ```
 
