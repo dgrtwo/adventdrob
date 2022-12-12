@@ -81,7 +81,7 @@ grid_graph <- function(d,
                        mutual = FALSE,
                        circular = FALSE) {
   td <- grid_tidy(d, ...)
-  dimensions <- c(max(td$row), max(td$col))
+  dimensions <- c(max(td$col), max(td$row))
 
   tidygraph::create_lattice(dimensions,
                             directed = directed,
